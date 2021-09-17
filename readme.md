@@ -1,6 +1,7 @@
 # About
 
 This is a submission for software training for Space Concordia.
+Involves an arduino node, and two software nodes that publish to the arduino node and subscribe from a topic published from the arduino.
 
 # Usage
 
