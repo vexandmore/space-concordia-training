@@ -24,6 +24,7 @@ ros::Subscriber<std_msgs::UInt16> led_subscriber("toggle_led", &subscriberCallba
 void setup() {
   pinMode(LED, OUTPUT);
   pinMode(BUTTON, INPUT);
+  pinMode(BUTTON, INPUT_PULLUP);
 
   node_handle.initNode();
   node_handle.advertise(button_publisher);
@@ -31,7 +32,7 @@ void setup() {
 }
 
 void loop() {
-  if (digitalRead(BUTTON) == HIGH) {
+  if (digitalRead(BUTTON) == LOW) {
     button_msg.data = "Pressed";
   } else {
     button_msg.data = "NOT pressed";

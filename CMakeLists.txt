@@ -160,7 +160,7 @@ include_directories(
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
 catkin_install_python(
-   PROGRAMS scripts/talker.py scripts/listener.py
+   PROGRAMS scripts/listener.py
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
@@ -213,10 +213,6 @@ add_executable(talker src/talker.cpp)
 # is this line necessary?
 target_link_libraries(talker ${catkin_LIBRARIES})
 add_dependencies(talker beginner_tutorials_generate_messages_cpp)
-
-add_executable(listener src/listener.cpp)
-target_link_libraries(listener ${catkin_LIBRARIES})
-add_dependencies(listener beginner_tutorials_generate_messages_cpp)
 
 # supposed to go after rosserial_configure_client????
 # execute_process(COMMAND patch ${CMAKE_CURRENT_BINARY_DIR}/ros_lib/ros/msg.h ${CMAKE_CURRENT_SOURCE_DIR}/patch/msg.patch)

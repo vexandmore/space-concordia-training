@@ -8,7 +8,7 @@ def callback(data):
 
 def listener():
     rospy.init_node('listener', anonymous=True)
-    rospy.Subscriber('chatter', String, callback)
+    rospy.Subscriber('button_press', String, callback)
 
     rospy.spin()
 
