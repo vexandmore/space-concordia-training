@@ -218,4 +218,6 @@ add_executable(listener src/listener.cpp)
 target_link_libraries(listener ${catkin_LIBRARIES})
 add_dependencies(listener beginner_tutorials_generate_messages_cpp)
 
+# supposed to go after rosserial_configure_client????
+# execute_process(COMMAND patch ${CMAKE_CURRENT_BINARY_DIR}/ros_lib/ros/msg.h ${CMAKE_CURRENT_SOURCE_DIR}/patch/msg.patch)
 

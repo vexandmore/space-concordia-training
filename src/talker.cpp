@@ -1,5 +1,6 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
+#include "std_msgs/UInt16.h"
 
 #include <sstream>
 
@@ -22,18 +23,16 @@ int main(int argc, char** argv) {
 	//
 	//Once all copies of the Publisher are destroyed, the topic 
 	//will disappear
-	ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
+	ros::Publisher chatter_pub = n.advertise<std_msgs::UInt16>("toggle_led", 1000);
 	//Specify a frequency to loop at
-	ros::Rate loop_rate(10);
+	ros::Rate loop_rate(5);
 
-	int count = 0;//total number of sent messages
+	int count = 0;//number of sent messages; determines whether to turn on or off
 	while (ros::ok()) {
-		std_msgs::String msg;
+		std_msgs::UInt16 msg;
 
-		std::stringstream ss;
-		ss << "hello world " << count;
-		msg.data = ss.str();
-		ROS_INFO("%s", msg.data.c_str());
+		msg.data = count % 2;
+		ROS_INFO("sent to arduino:  %u", msg.data);
 	
 		//publish() is how the message is actually sent.
 		chatter_pub.publish(msg);
